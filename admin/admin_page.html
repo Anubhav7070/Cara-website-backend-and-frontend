@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+    <script src="./admin_page.js"></script>
+    <style>
+        body {
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #343a40;
+            color: white;
+            padding: 20px;
+            position: fixed;
+        }
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul class="nav flex-column">
+            <li class="nav-item"><a href="#" class="nav-link text-white">Dashboard</a></li>
+            <li class="nav-item"><a href="#" class="nav-link text-white">Orders</a></li>
+            <li class="nav-item"><a href="#" class="nav-link text-white">Products</a></li>
+            <li class="nav-item"><a href="#" class="nav-link text-white">Customers</a></li>
+        </ul>
+    </div>
+    
+    <div class="content">
+        <h2>Add New Product</h2>
+        <form id="add-product" onsubmit="addProduct(event)">
+            <div class="mb-3">
+                <label class="form-label">Product ID</label>
+                <input type="text" name="addProductID" class="form-control" placeholder="Enter product ID">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Product Name</label>
+                <input type="text" name="productName" class="form-control" placeholder="Enter product name">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Price</label>
+                <input type="number" name="productPrice" class="form-control" placeholder="Enter price">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Image</label>
+                <input type="file" name="productImageFile" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Add Product</button>
+        </form>
+        
+        <h2 class="mt-5">Delete Outdated Clothing</h2>
+        <form onsubmit="deleteProduct(event)">
+            <div class="mb-3">
+                <label class="form-label">Product ID</label>
+                <input type="text" id="productID" name="productID" class="form-control" placeholder="Enter product ID to delete">
+            </div>
+            <button type="submit" class="btn btn-danger">Delete Product</button>
+        </form>
+    </div>
+</body>
+</html>

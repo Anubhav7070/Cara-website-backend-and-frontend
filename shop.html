@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cara</title>
+        <link rel="icon" type="image/x-icon" href="/img/icon1.png">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+        <link rel="stylesheet" href="style.css">
+        <style>
+            #search-container {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 20px;
+                padding: 0 20px;
+            }
+            
+            #search-container input {
+                width: 50%;
+                padding: 10px;
+                margin-right: 10px;
+                border: 1px solid #e1e1e1;
+                border-radius: 4px;
+                font-size: 16px;
+            }
+            
+            #search-btn {
+                padding: 10px 20px;
+                background-color: #088178;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+                transition: 0.3s ease;
+            }
+            
+            #search-btn:hover {
+                background-color: #065f58;
+            }
+            
+            .no-results {
+                text-align: center;
+                width: 100%;
+                padding: 40px;
+                font-size: 18px;
+                color: #606063;
+            }
+            
+            /* Enhanced search styles */
+            #filter-container {
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                margin-bottom: 20px;
+                flex-wrap: wrap;
+            }
+            
+            .filter-group {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+            
+            .filter-group label {
+                font-weight: 500;
+                color: #1a1a1a;
+            }
+            
+            .filter-group select {
+                padding: 8px;
+                border: 1px solid #e1e1e1;
+                border-radius: 4px;
+                background-color: white;
+            }
+            
+            #price-slider {
+                width: 200px;
+            }
+            
+            #price-display {
+                min-width: 80px;
+                text-align: center;
+                font-weight: 500;
+            }
+            
+            .search-highlight {
+                background-color: rgba(8, 129, 120, 0.1);
+                padding: 2px;
+                border-radius: 2px;
+            }
+            
+            #search-stats {
+                text-align: center;
+                margin-bottom: 20px;
+                font-size: 14px;
+                color: #606063;
+            }
+            
+            #clear-filters {
+                padding: 8px 16px;
+                background-color: #f0f0f0;
+                color: #606063;
+                border: 1px solid #e1e1e1;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: 0.3s ease;
+            }
+            
+            #clear-filters:hover {
+                background-color: #e1e1e1;
+            }
+            
+            .product-tag {
+                display: inline-block;
+                background-color: #f0f0f0;
+                color: #606063;
+                padding: 3px 8px;
+                border-radius: 12px;
+                margin-right: 5px;
+                margin-top: 5px;
+                font-size: 12px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <section id="header">
+            <a href="#"><img src="img/logo.png" class="logo" alt=""></a>
+
+            <div>
+                <ul id="navbar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a class="active" href="shop.html">Shop</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <li id="lg-bag"><a href="cart.html"><i class='bx bx-shopping-bag' ></i></a></li>
+                    <a href="#" id="close"><i class='bx bx-x'></i></a>
+                </ul>
+            </div>
+            <div id="mobile">
+                <a href="cart.html"><i class='bx bx-shopping-bag' ></i></a>
+                <i id="bar" class='bx bx-menu'></i>
+            </div>
+        </section>
+
+        <section id="page-header">
+            <h2>#stayhome</h2>
+            <p>save more with coupons & up to 70% off!</p>
+        </section> 
+
+        <!-- Enhanced Search Section -->
+        <div id="search-container" class="section-p1">
+            <input type="text" id="search-input" placeholder="Search for products...">
+            <button id="search-btn"><i class='bx bx-search'></i> Search</button>
+        </div>
+        
+        <!-- Filter Section -->
+        <div id="filter-container" class="section-p1">
+            <div class="filter-group">
+                <label for="brand-filter">Brand:</label>
+                <select id="brand-filter">
+                    <option value="">All Brands</option>
+                    <option value="adidas">Adidas</option>
+                    <option value="nike">Nike</option>
+                    <option value="puma">Puma</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="category-filter">Category:</label>
+                <select id="category-filter">
+                    <option value="">All Categories</option>
+                    <option value="t-shirt">T-Shirts</option>
+                    <option value="shirt">Shirts</option>
+                    <option value="pants">Pants</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="price-slider">Price:</label>
+                <input type="range" id="price-slider" min="1000" max="5000" value="5000">
+                <span id="price-display">Up to ₹5000</span>
+            </div>
+            
+            <button id="clear-filters">Clear Filters</button>
+        </div>
+        
+        <!-- Search Stats -->
+        <div id="search-stats" class="section-p1"></div>
+
+        <section id="product1" class="section-p1">
+            <div class="pro-container" id="product-container">
+                <div class="pro" onclick="window.location.href='sproduct.html';" data-name="Cartoon Astronaut T-Shirts" data-brand="adidas" data-price="2499" data-category="t-shirt" data-tags="casual,summer,cartoon">
+                    <img class="shirt" src="img/products/f1.jpg" alt="">
+                    <div class="des">
+                        <span>adidas</span>
+                        <h5>Cartoon Astronaut T-Shirts</h5>
+                        <div class="star">
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                        </div>
+                        <h4>₹2499</h4>
+                        <div class="tags">
+                            <span class="product-tag">casual</span>
+                            <span class="product-tag">summer</span>
+                        </div>
+                    </div>
+                    <a href="#"><i class='bx bx-cart cart' ></i></a>
+                </div>
+                <div class="pro" data-name="Flower Print T-Shirts" data-brand="adidas" data-price="2499" data-category="t-shirt" data-tags="floral,summer,casual">
+                    <img class="shirt" src="img/products/f2.jpg" alt="">
+                    <div class="des">
+                        <span>adidas</span>
+                        <h5>Flower Print T-Shirts</h5>
+                        <div class="star">
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                        </div>
+                        <h4>₹2499</h4>
+                        <div class="tags">
+                            <span class="product-tag">floral</span>
+                            <span class="product-tag">summer</span>
+                        </div>
+                    </div>
+                    <a href="#"><i class='bx bx-cart cart' ></i></a>
+                </div>
+                <div class="pro" data-name="Floral Pattern T-Shirts" data-brand="adidas" data-price="2499" data-category="t-shirt" data-tags="floral,summer,casual">
+                    <img class="shirt" src="img/products/f3.jpg" alt="">
+                    <div class="des">
+                        <span>adidas</span>
+                        <h5>Floral Pattern T-Shirts</h5>
+                        <div class="star">
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                        </div>
+                        <h4>₹2499</h4>
+                        <div class="tags">
+                            <span class="product-tag">floral</span>
+                            <span class="product-tag">pattern</span>
+                        </div>
+                    </div>
+                    <a href="#"><i class='bx bx-cart cart' ></i></a>
+                </div>
+                <div class="pro" data-name="Chinese Style T-Shirts" data-brand="nike" data-price="2499" data-category="t-shirt" data-tags="ethnic,casual,stylish">
+                    <img class="shirt" src="img/products/f4.jpg" alt="">
+                    <div class="des">
+                        <span>nike</span>
+                        <h5>Chinese Style T-Shirts</h5>
+                        <div class="star">
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                            <i class='bx bxs-star' ></i>
+                        </div>
+                        <h4>₹2499</h4>
+                        <div class="tags">
+                            <span class="product-tag">ethnic</span>
+                            <span class="product-tag">stylish</span>
+                        </div>
+                    </div>
+                    <a href="#"><i class='bx bx-cart cart' ></i></a>
+                </div>
+                <!-- More products with updated data attributes... -->
+                <!-- ADDING ITEMS USING SCRIPT -->
+                <script src="./shop_items.js"></script>
+            </div>
+        </section>
+
+        <section id="pagination" class="section-p1">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#"><i class='bx bx-right-arrow-alt'></i></a>
+        </section>
+
+        <section id="newsletter" class="section-p1 section-m1">
+            <div class="newstext">
+                <h4>Sign Up For Newsletters</h4>
+                <p>Get E-mail updates about our latest shop and <span>special offers.</span></p>
+            </div>
+            <div class="form">
+                <input type="text" placeholder="Your email address">
+                <button class="normal">Sign Up</button>
+            </div>
+        </section>
+
+        <footer class="section-p1">
+            <div class="col">
+                <img class="logo" src="./img/logo.png" alt="">
+                <h4>Contact</h4>
+                <p><strong>Address:</strong> 562 Wellington Road, Street 32, San Francisco</p>
+                <p><strong>Phone:</strong> +01 2222 345 / (+91) 0 123 456 789</p>
+                <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+                <div class="follow">
+                    <h4>Follow us</h4>
+                    <div class="icon">
+                        <i class='bx bxl-facebook'></i>
+                        <i class='bx bxl-twitter' ></i>
+                        <i class='bx bxl-instagram' ></i>
+                        <i class='bx bxl-pinterest-alt' ></i>
+                        <i class='bx bxl-youtube' ></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <h4>About</h4>
+                <a href="#">About us</a>
+                <a href="#">Devlivery Information</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Contact Us</a>
+            </div>
+
+            <div class="col">
+                <h4>My Account</h4>
+                <a href="#">Sign In</a>
+                <a href="#">View Cart</a>
+                <a href="#">My Wishlist</a>
+                <a href="#">Track My Order</a>
+                <a href="#">Help</a>
+            </div>
+
+            <div class="col install">
+                <h4>Install App</h4>
+                <p>From App Store or Google Play</p>
+                <div class="row">
+                    <img src="./img/pay/app.jpg" alt="">
+                    <img src="./img/pay/play.jpg" alt="">
+                </div>
+                <p>Secured Payment Gateways</p>
+                <img src="./img/pay/pay.png" alt="">
+            </div>
+
+            <div class="copyright">
+                <p>© 2025 HTML CSS Ecommerce Template</p>
+            </div>
+        </footer>
+
+        <script>
+            // Original script
+            const bar = document.getElementById('bar');
+            const close = document.getElementById('close');
+            const nav = document.getElementById('navbar');
+
+            if (bar) {
+                bar.addEventListener('click', () => {
+                    nav.classList.add('active');
+                })
+            }
+
+            if (close) {
+                close.addEventListener('click', () => {
+                    nav.classList.remove('active');
+                })
+            }
+
+            // Enhanced search functionality
+            const searchInput = document.getElementById('search-input');
+            const searchBtn = document.getElementById('search-btn');
+            const productContainer = document.getElementById('product-container');
+            const products = document.querySelectorAll('.pro');
+            const brandFilter = document.getElementById('brand-filter');
+            const categoryFilter = document.getElementById('category-filter');
+            const priceSlider = document.getElementById('price-slider');
+            const priceDisplay = document.getElementById('price-display');
+            const clearFiltersBtn = document.getElementById('clear-filters');
+            const searchStats = document.getElementById('search-stats');
+
+            // Update price display as slider moves
+            priceSlider.addEventListener('input', function() {
+                priceDisplay.textContent = `Up to ₹${this.value}`;
+            });
+
+            // Clear all filters
+            clearFiltersBtn.addEventListener('click', function() {
+                searchInput.value = '';
+                brandFilter.value = '';
+                categoryFilter.value = '';
+                priceSlider.value = 5000;
+                priceDisplay.textContent = 'Up to ₹5000';
+                filterProducts();
+            });
+
+            // Main filter function
+            function filterProducts() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const selectedBrand = brandFilter.value.toLowerCase();
+                const selectedCategory = categoryFilter.value.toLowerCase();
+                const maxPrice = parseInt(priceSlider.value);
+                
+                let visibleCount = 0;
+                let totalCount = products.length;
+
+                // Remove any existing "no results" message
+                const existingNoResults = document.querySelector('.no-results');
+                if (existingNoResults) {
+                    existingNoResults.remove();
+                }
+
+                // Remove previous highlights
+                document.querySelectorAll('.search-highlight').forEach(el => {
+                    el.outerHTML = el.innerHTML;
+                });
+
+                // Filter products based on all criteria
+                products.forEach(product => {
+                    const productName = product.getAttribute('data-name').toLowerCase();
+                    const productBrand = product.getAttribute('data-brand').toLowerCase();
+                    const productCategory = product.getAttribute('data-category').toLowerCase();
+                    const productPrice = parseInt(product.getAttribute('data-price'));
+                    const productTags = product.getAttribute('data-tags') ? product.getAttribute('data-tags').toLowerCase() : '';
+                    
+                    // Check if product matches all selected filters
+                    const matchesSearch = searchTerm === '' || 
+                                         productName.includes(searchTerm) || 
+                                         productBrand.includes(searchTerm) || 
+                                         productTags.includes(searchTerm);
+                    
+                    const matchesBrand = selectedBrand === '' || productBrand === selectedBrand;
+                    const matchesCategory = selectedCategory === '' || productCategory === selectedCategory;
+                    const matchesPrice = productPrice <= maxPrice;
+                    
+                    if (matchesSearch && matchesBrand && matchesCategory && matchesPrice) {
+                        product.style.display = 'block';
+                        visibleCount++;
+                        
+                        // Highlight search term in product name if there is a search term
+                        if (searchTerm !== '' && productName.includes(searchTerm)) {
+                            const nameElement = product.querySelector('h5');
+                            const regex = new RegExp(searchTerm, 'gi');
+                            nameElement.innerHTML = nameElement.textContent.replace(
+                                regex, 
+                                match => `<span class="search-highlight">${match}</span>`
+                            );
+                        }
+                    } else {
+                        product.style.display = 'none';
+                    }
+                });
+
+                // Update search stats
+                if (searchTerm !== '' || selectedBrand !== '' || selectedCategory !== '' || maxPrice < 5000) {
+                    searchStats.textContent = `Showing ${visibleCount} of ${totalCount} products`;
+                    searchStats.style.display = 'block';
+                } else {
+                    searchStats.style.display = 'none';
+                }
+
+                // Display message if no results found
+                if (visibleCount === 0) {
+                    const noResultsElement = document.createElement('div');
+                    noResultsElement.className = 'no-results';
+                    noResultsElement.innerHTML = `
+                        <p>No products found matching your criteria</p>
+                        <p>Try adjusting your filters or search term.</p>
+                    `;
+                    productContainer.appendChild(noResultsElement);
+                }
+            }
+
+            // Add event listeners
+            searchBtn.addEventListener('click', filterProducts);
+            searchInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    filterProducts();
+                }
+            });
+            brandFilter.addEventListener('change', filterProducts);
+            categoryFilter.addEventListener('change', filterProducts);
+            priceSlider.addEventListener('change', filterProducts);
+            
+            // Clear search on input field clear (x button click in some browsers)
+            searchInput.addEventListener('search', function() {
+                if (searchInput.value === '') {
+                    filterProducts();
+                }
+            });
+
+            // Initialize product data for filtering
+            function initializeProductData() {
+                // Get all unique brands
+                const brands = new Set();
+                const categories = new Set();
+                
+                products.forEach(product => {
+                    const brand = product.querySelector('.des span').textContent.toLowerCase();
+                    // Set default data attributes if not already set in HTML
+                    if (!product.hasAttribute('data-brand')) {
+                        product.setAttribute('data-brand', brand);
+                    }
+                    
+                    const name = product.querySelector('.des h5').textContent;
+                    if (!product.hasAttribute('data-name')) {
+                        product.setAttribute('data-name', name);
+                    }
+                    
+                    const priceText = product.querySelector('.des h4').textContent;
+                    const price = parseInt(priceText.replace('₹', ''));
+                    if (!product.hasAttribute('data-price')) {
+                        product.setAttribute('data-price', price);
+                    }
+                    
+                    // Add to brand and category sets
+                    brands.add(product.getAttribute('data-brand'));
+                    if (product.hasAttribute('data-category')) {
+                        categories.add(product.getAttribute('data-category'));
+                    }
+                });
+                
+                // Populate brand filter dropdown
+                brands.forEach(brand => {
+                    if (brand && !Array.from(brandFilter.options).some(option => option.value === brand)) {
+                        const option = document.createElement('option');
+                        option.value = brand;
+                        option.textContent = brand.charAt(0).toUpperCase() + brand.slice(1);
+                        brandFilter.appendChild(option);
+                    }
+                });
+                
+                // Populate category filter dropdown
+                categories.forEach(category => {
+                    if (category && !Array.from(categoryFilter.options).some(option => option.value === category)) {
+                        const option = document.createElement('option');
+                        option.value = category;
+                        option.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                        categoryFilter.appendChild(option);
+                    }
+                });
+            }
+
+            // Call initialize on page load
+            window.addEventListener('DOMContentLoaded', function() {
+                initializeProductData();
+            });
+        </script>
+    </body>
+</html>

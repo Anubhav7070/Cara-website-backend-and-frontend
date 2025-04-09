@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Cara</title>
+    <link rel="icon" type="image/x-icon" href="./img/icon1.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+    <section id="header">
+        <a href="#"><img src="img/logo.png" class="logo" alt=""></a>
+
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="lg-bag"><a href="cart.html"><i class='bx bx-shopping-bag'></i></a></li>
+                <a href="#" id="close"><i class='bx bx-x'></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class='bx bx-shopping-bag'></i></a>
+            <i id="bar" class='bx bx-menu'></i>
+        </div>
+    </section>
+
+    <div class="login-container">
+        <div class="login-form">
+            <h2>Login</h2>
+            <div class="login-tabs">
+                <button class="tab-btn active" id="userTabBtn">User</button>
+                <button class="tab-btn" id="adminTabBtn">Admin</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                    <div class="error-message" id="emailError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+                <div class="remember-forgot">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="login-btn" id="loginButton">Login</button>
+            </form>
+
+            <div class="or-divider" id="orDivider">
+                <span>OR</span>
+            </div>
+
+            <div class="social-login" id="socialLogin">
+                <div class="social-btn facebook">
+                    <i class='bx bxl-facebook' style="color: #3b5998;"></i>
+                </div>
+                <div class="social-btn google">
+                    <i class='bx bxl-google' style="color: #DB4437;"></i>
+                </div>
+                <div class="social-btn twitter">
+                    <i class='bx bxl-twitter' style="color: #1DA1F2;"></i>
+                </div>
+            </div>
+
+            <div class="register-link" id="registerLink">
+                <p>Don't have an account?<a href="register.html">"Register now"</p></a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="./img/logo.png" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> 562 Wellington Road, Street 32, San Francisco</p>
+            <p><strong>Phone:</strong> +01 2222 345 / (+91) 0 123 456 789</p>
+            <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class='bx bxl-facebook'></i>
+                    <i class='bx bxl-twitter'></i>
+                    <i class='bx bxl-instagram'></i>
+                    <i class='bx bxl-pinterest-alt'></i>
+                    <i class='bx bxl-youtube'></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="#">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="#">Contact Us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="./img/pay/app.jpg" alt="">
+                <img src="./img/pay/play.jpg" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="./img/pay/pay.png" alt="">
+        </div>
+
+        <div class="copyright">
+            <p>© 2025 HTML CSS Ecommerce Template</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const bar = document.getElementById('bar');
+        const close = document.getElementById('close');
+        const nav = document.getElementById('navbar');
+
+        if (bar) {
+            bar.addEventListener('click', () => {
+                nav.classList.add('active');
+            });
+        }
+
+        if (close) {
+            close.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        }
+
+        // Tab switching functionality
+        const userTabBtn = document.getElementById('userTabBtn');
+        const adminTabBtn = document.getElementById('adminTabBtn');
+        const orDivider = document.getElementById('orDivider');
+        const socialLogin = document.getElementById('socialLogin');
+        const registerLink = document.getElementById('registerLink');
+        let isAdminLogin = false;
+
+        userTabBtn.addEventListener('click', function() {
+            userTabBtn.classList.add('active');
+            adminTabBtn.classList.remove('active');
+            orDivider.style.display = 'flex';
+            socialLogin.style.display = 'flex';
+            registerLink.style.display = 'block';
+            isAdminLogin = false;
+        });
+
+        adminTabBtn.addEventListener('click', function() {
+            adminTabBtn.classList.add('active');
+            userTabBtn.classList.remove('active');
+            orDivider.style.display = 'none';
+            socialLogin.style.display = 'none';
+            registerLink.style.display = 'none';
+            isAdminLogin = true;
+        });
+
+        // Form Validation and Login Logic
+        const loginForm = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const emailError = document.getElementById('emailError');
+        const passwordError = document.getElementById('passwordError');
+
+        // Admin credentials (in a real application, this would be verified on the server)
+        const adminCredentials = {
+            email: "admin@cara.com",
+            password: "admin123"
+        };
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+
+            // Validate email
+            if (!emailInput.value) {
+                emailError.textContent = 'Email is required';
+                emailError.style.display = 'block';
+                isValid = false;
+            } else if (!isValidEmail(emailInput.value)) {
+                emailError.textContent = 'Please enter a valid email address';
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+
+            // Validate password
+            if (!passwordInput.value) {
+                passwordError.textContent = 'Password is required';
+                passwordError.style.display = 'block';
+                isValid = false;
+            } else if (passwordInput.value.length < 6) {
+                passwordError.textContent = 'Password must be at least 6 characters';
+                passwordError.style.display = 'block';
+                isValid = false;
+            } else {
+                passwordError.style.display = 'none';
+            }
+
+            // If form is valid, handle login
+            if (isValid) {
+                if (isAdminLogin) {
+                    // Check admin credentials
+                    if (emailInput.value === adminCredentials.email && 
+                        passwordInput.value === adminCredentials.password) {
+                        // Set admin login state
+                        localStorage.setItem('adminLoggedIn', 'true');
+                        // Redirect to admin dashboard
+                        window.location.href = 'admin-dashboard.html';
+                    } else {
+                        alert('Invalid admin credentials!');
+                    }
+                } else {
+                    // Handle regular user login
+                    // In a real application, you would send the data to a server here
+                    localStorage.setItem('userLoggedIn', 'true');
+                    localStorage.setItem('userEmail', emailInput.value);
+                    alert('User login successful!');
+                    window.location.href = 'index.html';
+                }
+            }
+        });
+
+        // Email validation function
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Social login event listeners
+        const socialButtons = document.querySelectorAll('.social-btn');
+        socialButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const platform = this.classList.contains('facebook') ? 'Facebook' : 
+                                this.classList.contains('google') ? 'Google' : 'Twitter';
+                alert(`Login with ${platform} clicked. This would redirect to ${platform} login in a real application.`);
+            });
+        });
+
+        // Forgot password link
+        const forgotPasswordLink = document.querySelector('.forgot-password');
+        forgotPasswordLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Forgot password clicked. This would show a password reset form in a real application.');
+        });
+    </script>
+
+    <style>
+        /* Additional styles for login tabs */
+        .login-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            color: #088178;
+            border-bottom: 2px solid #088178;
+        }
+        
+        .tab-btn:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</body>
+
+</html>
